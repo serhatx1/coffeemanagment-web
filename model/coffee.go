@@ -11,10 +11,9 @@ type Beverage struct {
 	Price       float32 `gorm:"not null"`
 	Calories    float32 `gorm:"not null"`
 	ImageUrl    string  `gorm:"size:255"`
-	Recipe      string  `gorm:"type:json"` // Store JSON as a string in the database
+	Recipe      string  `gorm:"type:json"`
 }
 
-// Method to convert Recipe string into a map
 func (b *Beverage) UnmarshalRecipe() (map[string]int, error) {
 	var recipe map[string]int
 	err := json.Unmarshal([]byte(b.Recipe), &recipe)
@@ -24,7 +23,6 @@ func (b *Beverage) UnmarshalRecipe() (map[string]int, error) {
 	return recipe, nil
 }
 
-// Method to convert a map into a Recipe string
 func (b *Beverage) MarshalRecipe(recipe map[string]int) error {
 	data, err := json.Marshal(recipe)
 	if err != nil {

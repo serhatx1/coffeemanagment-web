@@ -17,7 +17,7 @@ func main() {
 
 	DB.Init()
 
-	if err := DB.DB.AutoMigrate(&model.Beverage{}, &model.Stock{}); err != nil {
+	if err := DB.DB.AutoMigrate(&model.Beverage{}, &model.Order{}); err != nil {
 		log.Fatalf("failed to migrate database: %v", err)
 	}
 	EndPointHandler.SetupRoutes(e)

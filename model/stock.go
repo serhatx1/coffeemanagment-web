@@ -1,6 +1,7 @@
 package model
 
 type Stock struct {
+	ID              int `gorm:"primaryKey"`
 	Milk            int `gorm:"not null"`
 	MilkLactoseFree int `gorm:"default:0"`
 	Arabica         int `gorm:"default:0"`
